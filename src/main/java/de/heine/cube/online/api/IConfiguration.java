@@ -25,7 +25,7 @@ import java.util.Locale;
  * Configuration is responsible for all configuration information of CUBE-App
  * 
  * 
- * @author axu
+ * @author xuamao@gmail.com
  * 
  */
 public interface IConfiguration {
