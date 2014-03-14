@@ -1,4 +1,0 @@
-
-function doLayout(overhowimage){
-	 $(this).css('background-image','url(resources/images/'+overhowimage+'.png)');
-}
