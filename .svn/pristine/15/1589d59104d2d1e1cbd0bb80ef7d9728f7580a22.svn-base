@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cube</title>
+</h:head>
+<h:body>
+
+	<!-- Layout from primesfaces is only as suggestion.  -->
+
+	<h:link value="Login" outcome="login" />
+	<br></br>
+	<h:link value="Logout" outcome="logout" />
+	<br></br>
+	<h:link value="HomeOverview" outcome="homeOverview" />
+	
+	<br></br>
+	<h:link value="Allocate_experimental" outcome="allocate_experimental" />
+	<br></br>
+	<br></br>
+	<br></br>
+	<h:link value="Exception" outcome="exception" />
+	<br></br>
+</h:body>
+</html>

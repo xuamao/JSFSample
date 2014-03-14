@@ -1,0 +1,51 @@
+package de.heine.cube.onlineTest;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.model.CroppedImage;
+
+@ManagedBean
+@SessionScoped
+public class ImageBean {
+
+	private CroppedImage croppedImage;
+
+
+	private int width;
+	private int height;
+
+	public CroppedImage getCroppedImage() {
+		return croppedImage;
+	}
+
+	public void setCroppedImage(CroppedImage croppedImage) {
+		this.croppedImage = croppedImage;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public String measurement() {
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+				"Size:", "Width:" +croppedImage.getWidth()+ ",Height:"+ croppedImage.getHeight());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		return null;
+	}
+
+}

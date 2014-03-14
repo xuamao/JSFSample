@@ -1,0 +1,179 @@
+package de.heine.cube.online.component;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.InputStream;
+import java.net.URL;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+import de.heine.cube.common.dto.ImageVO;
+
+@ManagedBean(name = "allocationManagedBean")
+@SessionScoped
+public class AllocationManagedBean {
+
+	private String imageId;
+	private String sector;
+	private int x;
+	private int y;
+	
+	private ImageVO availableImages[] = fillDummyImages(2);
+	
+	private ImageVO mockImage = null;
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	private String firstName;
+	private String lastName;
+
+	public String getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(String imageId) {
+		this.imageId = imageId;
+	}
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public StreamedContent getImage1() {
+		if (availableImages != null && availableImages.length > 0) {
+			return new DefaultStreamedContent(new ByteArrayInputStream(availableImages[0].getImage()), "image/png");
+		}
+		else {
+			return new DefaultStreamedContent(new ByteArrayInputStream(getMockImage().getImage()), "image/png");
+		}
+	}
+	public StreamedContent getImage2() {
+		if (availableImages != null && availableImages.length > 1) {
+			return new DefaultStreamedContent(new ByteArrayInputStream(availableImages[1].getImage()), "image/png");
+		}
+		else {
+			return new DefaultStreamedContent(new ByteArrayInputStream(getMockImage().getImage()), "image/png");
+		}
+	}
+	public StreamedContent getImage3() {
+		if (availableImages != null && availableImages.length > 2) {
+			return new DefaultStreamedContent(new ByteArrayInputStream(availableImages[2].getImage()), "image/png");
+		}
+		else {
+			return new DefaultStreamedContent(new ByteArrayInputStream(getMockImage().getImage()), "image/png");
+		}
+	}
+	public StreamedContent getImage4() {
+		if (availableImages != null && availableImages.length > 3) {
+			return new DefaultStreamedContent(new ByteArrayInputStream(availableImages[3].getImage()), "image/jpg");
+		}
+		else {
+			return new DefaultStreamedContent(new ByteArrayInputStream(getMockImage().getImage()), "image/png");
+		}
+	}
+
+	public void allocate() {
+		System.out.println("allocate was called:");
+		System.out.println("imageId: " + imageId);
+		System.out.println("sector: " + sector);
+		System.out.println("x: " + x);
+		System.out.println("y: " + y);
+		System.out.println();
+		
+//		PatientService service;
+		try {
+//			InitialContext ctx = new InitialContext();
+//			service = (PatientService)ctx.lookup("java:global/CUBE-Web-Processor/PatientServiceBean");
+//			PatientVO patient = service.createPatient(lastName, firstName, new Date(), Gender.male.toString());
+//			System.out.println("patient created! ID=" + patient.getID_Patient());
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// FIXME ist nur Dummy, kann so nicht bleiben
+	private ImageVO getMockImage() {
+		if (mockImage == null) {
+			try {
+				mockImage = new ImageVO();
+				URL url = new URL("http://localhost:8080/cube-online-module-0.0.1-SNAPSHOT/resources/images/imageThumbnailNormal.png");
+				InputStream stream = url.openStream();
+				if (stream == null) {
+					throw new RuntimeException("image not found");
+				}
+				byte[] imgDataBa = new byte[1367];
+				DataInputStream dataIs = new DataInputStream(stream);
+				dataIs.readFully(imgDataBa);
+				mockImage.setImage(imgDataBa);
+			}
+			catch (Exception e) {
+				mockImage = null;
+				throw new RuntimeException("mock image not found");
+			}
+		}
+		return mockImage;
+	}
+	
+	// FIXME ist nur Dummy, kann so nicht bleiben
+	private ImageVO[] fillDummyImages(int number) {
+		try {
+			ImageVO[] images = new ImageVO[2];
+			for (int i = 0; i < number; i++){
+				URL url = new URL("http://localhost:8080/cube-online-module-0.0.1-SNAPSHOT/resources/images_temp/IMG_1732.jpg");
+				InputStream stream = url.openStream();
+				if (stream == null) {
+					throw new RuntimeException("image not found");
+				}
+				byte[] imgDataBa = new byte[3737];
+				DataInputStream dataIs = new DataInputStream(stream);
+				dataIs.readFully(imgDataBa);
+				images[i] = new ImageVO();
+				images[i].setImage(imgDataBa);
+			}
+			return images;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("error while filling dummy images");
+		}
+	}
+}

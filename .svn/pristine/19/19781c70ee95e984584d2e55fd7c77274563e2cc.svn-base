@@ -1,0 +1,277 @@
+body {
+	color: black;
+	font-size: 100.01%;
+	font-family: Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 0em;
+	min-width: 40em; /* Mindestbreite verhindert Umbruch 			und Anzeigefehler in modernen Browsern */
+  }
+.menuCenterPane {
+	height: 45px;
+	width: auto;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-color: #EEE;
+	position: relative;
+	margin-left: 200px;
+	padding-top: 5px;
+	text-align: center;
+}
+#leftColumn {
+	width: 200px;
+	height: 800px;
+	background-color: #BBB;
+	position: absolute;
+}
+#rightColumn {
+	position: absolute;
+	background: #CF6;
+	height: 800px;
+	background-color: #CCC;
+	width: 240px;
+}
+#centerPane {
+	background-color: #BBBBBB;
+	position: absolute;
+}
+.menuCenterPane .menu {
+	background-color: #999;
+	float: right;
+	height: 50px;
+	min-width: 200px;
+	clear: none;
+	width: 450px;
+	margin-top: -5px;
+	text-align: right;
+}
+.patientListOverlay{
+	background: #777;
+	width: 90%;
+	float: left;
+	height: 805px;
+	position: fixed;
+	margin-left: 100%;
+	z-index: 3;
+	box-shadow: -10px 10px 5px  rgba(0,0,0,0.5);
+}
+#patientListButton{
+	width: 100px;
+	background: #444;
+	float: left;
+	margin-left: -100px;
+	margin-top: 150px;
+	height: 100px;
+	border: 1px black;
+	box-shadow: -10px 10px 5px  rgba(0,0,0,0.5);
+}
+.overlay{
+	background: #666;
+	height: 79.5%;
+	width: 79.5%;
+	position: fixed;
+	top: 5%;
+	left: 10%;
+	z-index: 1;
+	padding-top: 0.5%;
+	padding-left: 0.5%;
+	margin-left: 0px;
+}
+#container {
+	position:absolute;
+	top:60px;
+	left:0px;
+}
+#dimmer{
+	background: rgba(180,180,180,0.5);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	display: none;
+}
+
+.ui-button{
+	background: #444 !important;
+	border: 0px !important;
+}
+.settings{
+	width:120px !important;
+	height: 50px !important;
+}
+.info{
+	width:100px !important;
+	height: 50px !important;
+}
+.logout{
+	width:240px !important;
+	height: 60px !important;
+	left:700px;
+	top:0px;
+	position: absolute;
+	background: url(../images/btnLogoutNormal.png) !important;
+}
+.logout:active {
+	background: url(../images/btnLogoutActive.png) !important;
+}
+.logout:hover {
+	background: url(../images/btnLogoutHover.png) !important;
+}
+#homeButton {
+	width:240px !important;
+	height: 60px !important;
+	left:0px;
+	top:0px;
+	position: absolute;
+	background: url(../images/btnHomeNormal.png) !important;
+}
+#homeButton:active {
+	background: url(../images/btnHomeActive.png) !important;
+}
+#homeButton:hover {
+	background: url(../images/btnHomeHover.png) !important;
+}
+.screening{
+	width: 220px !important;
+	height: 80px !important;
+}
+.baseline{
+	width: 220px !important;
+	height: 80px !important;
+}
+.guide{
+	width: 220px !important;
+	height: 80px !important;
+}
+.leftImage{
+	position:relative;
+	width: 200px;
+	height: auto;
+	z-index: 3;
+}
+#centerBackground{
+	top: 0px;
+	left: 0px;
+	width: 750px;
+	height: 500px;
+	position:absolute;
+	z-index: 20;
+}
+#pin {
+	top: 300px;
+	left: 650px;
+	z-index: 60;
+	position:absolute;
+}
+#turnPreviousButton {
+	top: 10px;
+	left: 10px;
+	z-index: 60;
+	position:absolute;
+}
+#turnNextButton {
+	top: 10px;
+	left: 710px;
+	z-index: 60;
+	position:absolute;
+}
+#zoomOutButton {
+	top: 0px;
+	left: 360px;
+	z-index: 60;
+	width:80;
+	height:45;
+	color:white;
+	position:absolute;
+	background: url(../images/btn100PercentNormal.png) !important;
+}
+#zoomOutButton:hover { 
+	color:black;
+	background: url(../images/btn100PercentHover.png) !important;
+}
+#zoomOutButton:active {
+	color:black;
+	background: url(../images/btn100PercentActive.png) !important;
+}
+#header {
+	height:60px;
+	position: absolute;
+}
+#footer {
+	height:60px;
+	position: absolute;
+}
+#bodymapLeft {
+	position:absolute;	
+}
+#bodymapFront {
+	position:absolute;	
+}
+#bodymapRight {
+	position:absolute;	
+}
+#bodymapBack {
+	position:absolute;	
+}
+#bodymapDetail {
+	position:absolute;
+}
+#bodymapDetailClip {
+	position:absolute;
+	overflow:hidden;
+	z-index: 10;
+}
+#bodymapDetailImage {
+	position:absolute;
+}
+#turnLeftButton {
+	position:absolute;
+	width: 60;
+	background: url(../images/turnBackgroundNormal.png) !important;
+}
+#turnLeftButton:hover {
+	background: url(../images/turnBackgroundHover.png) !important;
+}
+#turnLeftButton:active {
+	background: url(../images/turnBackgroundActive.png) !important;
+}
+#turnRightButton {
+	position:absolute;
+	width: 60;
+	background: url(../images/turnBackgroundNormal.png) !important;
+}
+#turnRightButton:hover {
+	background: url(../images/turnBackgroundHover.png) !important;
+}
+#turnRightButton:active {
+	background: url(../images/turnBackgroundActive.png) !important;
+}
+#iconTurnLeftButton {
+	position:absolute;
+}
+#iconTurnRightButton {
+	position:absolute;
+}
+#allocationMarkerImage {
+	float: left;
+}
+#allocationForm {
+	float: left;
+}
+.allocationButton {
+	margin-right:25px;
+	width:120px;
+	height:45px;
+	color:white;
+	background: url(../images/btnAllocateNormal.png) !important;
+}
+.allocationButton:hover {
+	color:black;
+	background: url(../images/btnAllocateHover.png) !important;
+}
+.allocationButton:active {
+	color:black;
+	background: url(../images/btnAllocateActive.png) !important;
+}
+

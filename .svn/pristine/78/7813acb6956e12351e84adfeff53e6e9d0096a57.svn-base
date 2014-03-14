@@ -1,0 +1,75 @@
+/***********************************************
+         created by amao xu
+         Basic Elements
+***********************************************/
+.heine-logo {
+	width: 124px;
+	height: 60px;
+	float: left;
+	padding: 5px;
+}
+
+.heine-logo-text {
+	height: 60px;
+	float: left;
+	font-family: "Helvetica Neue 45Light",Arial,sans-serif;
+	font-size: 18pt;
+	padding-top: 20px;
+}
+
+.logincontainer {
+	margin-left: 200px;
+	margin-top: 100px;
+	width: 480px;
+	height: 200px;
+}
+
+.username {
+	color: white;
+	width: 480px;
+	height: 60px;
+	padding-left: 20px;
+	font-family: "Helvetica Neue 75Bold",Arial,sans-serif;
+	font-size: 18pt;
+	background-image: url('../../resources/images/loginTextfieldNormal.png');
+}
+
+INPUT:hover {
+	background-image: url('../../resources/images/loginTextfieldActive.png');
+}
+
+INPUT:focus {
+	background-image: url('../../resources/images/loginTextfieldActive.png');
+}
+
+.password {
+	color: white;
+	width: 480px;
+	height: 60px;
+	padding-left: 20px;
+	font-family: "Helvetica Neue 45Light",Arial,sans-serif;
+	font-size: 18pt;
+	background-image: url('../../resources/images/loginTextfieldNormal.png');
+}
+
+.loginButton {
+	width: 160px;
+	height: 61px;
+	background-image: url('../../resources/images/btnLoginNormal.png');
+	color: rgb(0,0,0);
+	font-family: "Helvetica Neue 65Medium",Arial,sans-serif;
+	font-size: 14pt;
+	padding-left: 45px;
+	margin-top:30px;
+	float: right;
+}
+
+.loginButton:hover {
+	background-image: url('../../resources/images/btnLoginHover.png');
+}
+
+
+#container {
+	background-image: url('../../resources/images/backgroundLogin.png');
+	background-repeat: repeat-x;
+}

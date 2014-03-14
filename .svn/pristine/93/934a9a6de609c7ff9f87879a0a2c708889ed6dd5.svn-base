@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template/basicTemplate.xhtml">
+	<ui:define name="script">
+		<style type="text/css">
+			@import url(resources/css/compare.css);
+			</style>
+		<script type="text/javascript">  
+		 $(function() {
+			 $('.closeButton').click( function (){
+				 window.location.href='/cube-online-module-0.0.1-SNAPSHOT/HomePatientOverview.xhtml';
+				 });
+			 }
+		 );
+		</script>
+	</ui:define>
+	<ui:define name="head">
+		<div class="heine-logo">
+			<p:graphicImage value="resources/images/logoHeine.png" />
+		</div>
+		<div class="heine-logo-text">Compare</div>
+		<div class="heine_pateint_info">PATIENT #{compareBean.currentPatient.firstName} #{compareBean.currentPatient.lastName} | #{compareBean.currentPatient.gender}  | 
+			<h:outputText value="#{compareBean.currentPatient.date_Of_Birth}">
+					<f:convertDateTime pattern="dd.MM.yyyy"/>
+			</h:outputText> 
+		</div>
+		<div style="min-width: 180px; top: 0px; position: absolute; right: 0px;">
+			<h:form>
+				<p:commandButton styleClass="btnOnepictureNormal" id="OneViewTemplate"  value="" actionListener="#{compareBean.compareViewChange}"/>
+				<p:commandButton styleClass="btnTwopicturesNormal" id="TwoViewTemplate"  value="" actionListener="#{compareBean.compareViewChange}"/>
+				<p:commandButton styleClass="btnFourpicturesNormal" id="FourViewTemplate" value="" actionListener="#{compareBean.compareViewChange}" />
+			</h:form>
+		</div>
+		<div style="width: 400px; top: 0px; position: absolute; right: 0px;">
+			<h:form>
+				<p:graphicImage styleClass="closeButton" style="position:absolute; right:0px;" value="resources/images/btnCloseNormal.png"/>
+			</h:form>
+		</div>
+	</ui:define>
+	
+	<ui:define name="container">
+		
+			<ui:include src="#{compareBean.template}">
+			</ui:include>
+	</ui:define>
+	
+	<ui:define name="footer">
+		<h:form>
+			<p:commandButton styleClass="zoomInButton" value=""></p:commandButton>
+			<p:commandButton styleClass="zoomOutButton" value=""></p:commandButton>
+			<p:commandButton styleClass="measurementButton" value="Measurement" action="#{imageCropperBean.crop}"></p:commandButton>
+			<p:commandButton styleClass="disabledButton" value="Disable"></p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>

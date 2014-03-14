@@ -1,0 +1,124 @@
+/*****************************************
+ * 
+ * Project: Cube Application Heine
+ * Package Type:
+ * Create by: amao.xu@altran.com
+ * Date: 01.07.2013
+ *
+ *****************************************/
+package de.heine.cube.online.component.dataModel;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+import de.heine.cube.common.dto.ImageVO;
+import de.heine.cube.common.dto.LocationVO;
+import de.heine.cube.common.dto.PatientVO;
+
+/**
+ * PatientPageDateModel contains all date for page HomePatientOverview.xhtml
+ * 
+ * @author axu
+ * 
+ */
+public class PatientPageDateModel implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3157853141263466381L;
+	
+	private static final Logger log = Logger
+			.getLogger(PatientPageDateModel.class.getName());
+
+	private PatientVO correntPatient;
+	
+	private List<LocationVO> locationList;
+	
+	private List<ImageVO> imageList;
+
+	/**
+	 * @return the correntPatient
+	 */
+	public PatientVO getCorrentPatient() {
+		return correntPatient;
+	}
+
+	/**
+	 * @param correntPatient the correntPatient to set
+	 */
+	public void setCorrentPatient(PatientVO correntPatient) {
+		this.correntPatient = correntPatient;
+	}
+
+	/**
+	 * @return the locationList
+	 */
+	public List<LocationVO> getLocationList() {
+		return locationList;
+	}
+
+	/**
+	 * @param locationList the locationList to set
+	 */
+	public void setLocationList(List<LocationVO> locationList) {
+		this.locationList = locationList;
+	}
+
+	/**
+	 * @return the imageList
+	 */
+	public List<StreamedContent> getImageList() {
+		
+		List<StreamedContent> list = new ArrayList<StreamedContent>();
+		for(ImageVO image: imageList){
+			list.add(new DefaultStreamedContent(
+                        new ByteArrayInputStream(image.getImage()),                            
+                        "image/png"));
+		}
+		
+		return list;
+	}
+	
+	public StreamedContent getImage(){
+		URL url;
+		try {
+			url = new URL("http://localhost:8080/cube-online-module-0.0.1-SNAPSHOT/testImage2.png");
+			InputStream is = url.openStream();
+			
+			byte[] imgDataBa = new byte[3947];
+			DataInputStream dataIs = new DataInputStream(is);
+			dataIs.readFully(imgDataBa);
+			return new DefaultStreamedContent(
+	                new ByteArrayInputStream(imgDataBa),                            
+	                "image/png");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	
+	}
+
+	/**
+	 * @param imageList the imageList to set
+	 */
+	public void setImageList(List<ImageVO> imageList) {
+		this.imageList = imageList;
+	}
+	
+}

@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template/threeColumnTemplate.xhtml">
+	<ui:define name="head">
+		test
+	</ui:define>
+	
+	<ui:define name="leftcolumn">
+		left
+	</ui:define>
+	<ui:define name="centercolumn">
+		<h:form>  
+    <h:panelGrid columns="2">  
+        <p:imageCropper value="#{imageCropperBean.croppedImage}"  
+                    image="resources/images_temp/testImageThumb01.png"  
+                    initialCoords="225,75,300,125"/>  
+        
+        <p:imageCropper value="#{imageCropperBean.croppedImage}"  
+                    image="resources/images_temp/testImageThumb01.png"  
+                    initialCoords="225,75,300,125"/>
+    </h:panelGrid>  
+  
+</h:form>  
+	</ui:define>
+	<ui:define name="rightcolumn">
+		right<br/>
+		<p:inputText value="#{loginBean.username}" id="username"
+							styleClass="username" required="true" label="Username" />
+							        <p:watermark for="username" value="#{msg['login_username']}" />
+							        
+							         <p:commandButton id="setting" value="setting" onclick="dlg2.show();" type="button"/>  
+ 
+						<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">  
+						    <h:outputText value="This is a Modal Dialog." />  
+						</p:dialog>  
+	</ui:define>
+</ui:composition>

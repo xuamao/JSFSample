@@ -1,0 +1,277 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template/threeColumnTemplate.xhtml">
+	<ui:define name="script">
+		<script src="resources/js/basic.js"></script>
+		<script src="resources/js/home.js"></script>
+		<script src="resources/js/export.js"></script>
+		<style type="text/css">
+				@import url(resources/css/home.css);
+				@import url(resources/css/export.css);
+		</style>
+		<script type="text/javascript">  
+			$(document).ready(function() {
+				$(".patientlistButton").offset({left: window.innerWidth-140});
+				$("#closeAction").offset({left: window.innerWidth-60});
+				locations = eval('#{sessionBean.locationsOfCurrentPatientAsJSON}');
+		        createLocations();
+		    	home_do_layout();
+		    	window.onresize=home_do_layout;
+		    });
+		   
+	</script>
+	</ui:define>
+	<ui:define name="layer">
+		<div id="patientlistLayer">
+			<div id="layerContainer">
+				<h:form id="testTable">
+					<div class="patientTable">
+						<div id="searchInput">
+							<div class="advancedsearch">
+								<p:graphicImage
+									value="resources/images/btnAdvancedsearchNormal.png" />
+							</div>
+							<p:inputText styleClass="searchInputText"
+								value="#{homeOverviewBean.dataModel.searchKeyword}"
+								valueChangeListener="#{homeOverviewBean.reloadPatient}">
+								<!-- Update must be the ID of following dataTable -->
+								<p:ajax event="keyup" update="patientdataTable" />
+							</p:inputText>
+							<div id="addPatientButton" class="addpatientNormal">
+								<p:graphicImage value="resources/images/btnAddpatientNormal.png" />
+							</div>
+						</div>
+
+						<p:dataTable id="patientdataTable"
+							tableStyleClass="patientdataTable" 
+							value="#{homeOverviewBean.dataModel.patientDataModel}" scrollable="true" 
+							scrollHeight="600" var="patient" rowKey="#{patient.ID_Patient}"
+							selection="#{homeOverviewBean.dataModel.selectedPatient}"
+							selectionMode="single" rowClasses="odd even">
+
+							<p:ajax event="rowSelect"
+								listener="#{homeOverviewBean.onRowSelect}" />
+								
+							<p:column >
+								<h:outputText style="width:200px; display:inline-block;" value="#{patient.lastName}" />
+								<h:outputText style="width:200px; display:inline-block;" value="#{patient.firstName}" />
+								<h:outputText style="width:160px; display:inline-block;" value="#{patient.gender}" />
+								<h:outputText style="width:160px; display:inline-block;" value="#{patient.date_Of_Birth}">
+									<f:convertDateTime pattern="dd-MM-yyyy"/>
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+					</div>
+				</h:form>
+			</div>
+
+			<div id="layerContainer2">
+				<div class="addpatientPanel" >
+					<h:form id="addpatientForm">
+					 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />  
+						<h:panelGrid id="addpatientPanelGrid" columns="2" cellpadding="15">
+							<h:panelGroup>
+								<h:inputText value="#{homeOverviewBean.dataModel.lastname}"
+									id="patientName" styleClass="inputfield480x60" required="true"
+									label="PatientName" />
+								<p:watermark for="patientName" value="#{msg['lastname']}" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<h:inputText value="#{homeOverviewBean.dataModel.firstname}"
+									id="patientFirstName" styleClass="inputfield480x60"
+									required="true" label="PatientFirstName" />
+								<p:watermark for="patientFirstName" value="#{msg['firstname']}" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<p:calendar id="popupCal" value="#{homeOverviewBean.dataModel.birthday}"
+									styleClass="popCalender" />
+								<p:watermark for="popupCal" value="Birthday" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<p:selectOneButton value="#{homeOverviewBean.dataModel.gender}"
+									styleClass="genderButton">
+									<f:selectItem itemLabel="Male" itemValue="true" />
+									<f:selectItem itemLabel="Female" itemValue="false" />
+								</p:selectOneButton>
+							</h:panelGroup>
+							<p:commandButton id="saveandnew" styleClass="saveandnew"
+								value="#{msg['saveandnew']}"
+								actionListener="#{homeOverviewBean.saveandnew}"
+								update="addpatientForm" />
+							<p:commandButton id="saveandstart" styleClass="saveandstart"
+								value="#{msg['saveandstart']}"
+								actionListener="#{homeOverviewBean.saveandstart}"
+								oncomplete="handlesaveandstart(xhr, status, args)" />
+						</h:panelGrid>
+					</h:form>
+					
+					<p:graphicImage id="closeAction" style="position: absolute; top: 0px;" value="resources/images/btnCloseActive.png"></p:graphicImage>
+
+					<script type="text/javascript">  
+					    function handlesaveandstart(xhr, status, args) {  
+					    	 alert(args.message) ;
+					    	 if(args.url){
+					    		 window.location.href = args.url;
+						      }
+						}   
+					</script>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="patienteditLayer"  style="display:none;">
+			<div id="layerContainer3">
+				<div class="editpatientPanel"
+					style="width: 60%; margin: 100px auto; min-width: 1000px">
+					<h:form id="editpatientForm">
+						<h:panelGrid columns="2" cellpadding="15">
+							<h:panelGroup>
+								<h:inputText value="#{homeOverviewBean.dataModel.selectedPatient.lastName}"
+									id="patientName" styleClass="inputfield480x60" required="true"
+									label="PatientName" />
+								<p:watermark for="patientName" value="#{msg['lastname']}" />
+							</h:panelGroup>
+
+							<h:panelGroup>
+								<h:inputText value="#{homeOverviewBean.dataModel.selectedPatient.firstName}"
+									id="patientFirstName" styleClass="inputfield480x60"
+									required="true" label="PatientFirstName" />
+								<p:watermark for="patientFirstName" value="#{msg['firstname']}" />
+							</h:panelGroup>
+
+							<h:panelGroup>
+								<p:calendar id="popupCal"
+									value="#{homeOverviewBean.dataModel.selectedPatient.date_Of_Birth}"
+									styleClass="popCalender" />
+								<p:watermark for="popupCal" value="Birthday" />
+							</h:panelGroup>
+
+							<h:panelGroup>
+								<p:selectOneButton value="#{homeOverviewBean.dataModel.selectedPatient.gender}"
+									styleClass="genderButton">
+									<f:selectItem itemLabel="Male" itemValue="male" />
+									<f:selectItem itemLabel="Female" itemValue="female" />
+								</p:selectOneButton>
+							</h:panelGroup>
+
+							<p:commandButton id="save" styleClass="saveandnew"
+								value="#{msg['save']}"
+								actionListener="#{homeOverviewBean.saveCurrentPatient}"
+								oncomplete="handlesave(xhr, status, args)"
+								update="editpatientForm" />
+						</h:panelGrid>
+					</h:form>
+
+					<script type="text/javascript">  
+					  function handlesave(xhr, status, args) {  
+						  window.location.href='/cube-online-module-0.0.1-SNAPSHOT/homeOverview.xhtml';
+						} 
+					</script>
+				</div>
+			</div>
+		</div>
+		
+		<h:form id="commentLayer">
+			<p:growl id="growl" showDetail="true" life="3000" />
+			<div class="imageFlyout">
+				<span>
+					<p:inputTextarea id="certainImageID" style="margin:30px;"  disabled="false" rows="3" cols="20" value ="#{homeOverviewBean.dataModel.image.comment}" autoResize="true" >
+					</p:inputTextarea>
+					
+					<p:inputTextarea  style="margin:30px;"  disabled="false" rows="3" cols="20" value ="#{homeOverviewBean.dataModel.image.diagnosis}" autoResize="true" >
+					</p:inputTextarea>
+				</span>
+				<p:commandLink actionListener="#{homeOverviewBean.saveComment}" update="growl">
+				<p:graphicImage styleClass="commentNormal"
+					value="resources/images/btnDiscardInactive.png"  />
+				</p:commandLink>
+				<div class="iconTurn"></div>
+				<p:graphicImage styleClass="compareSmallNormal"
+					value="resources/images/btnDiscardInactive.png" />
+			</div>
+		</h:form>
+		<div id="exportLayer">
+			<ui:include src="exportOverlay.xhtml" />			
+		</div>	
+	</ui:define>
+
+	<ui:define name="head">
+		<div class="heine-logo">
+			<p:graphicImage value="resources/images/logoHeine.png" />
+		</div>
+		<div class="heine-logo-text">Home</div>
+		<div class="heine_pateint_info">PATIENT #{homeOverviewBean.currentPatient.firstName} #{homeOverviewBean.currentPatient.lastName} | #{homeOverviewBean.currentPatient.gender}  | 
+		<h:outputText value="#{homeOverviewBean.currentPatient.date_Of_Birth}">
+									<f:convertDateTime pattern="dd.MM.yyyy"/>
+								</h:outputText> </div>
+		<h:form>
+		<div style="min-width: 600px; top: 0px; position: absolute; right: 0px;">
+		
+			<h:commandButton value="#{msg['logout']}" styleClass="logoutButton"
+				action="#{logoutBean.logout}" />
+			<h:commandButton value="#{msg['info']}" styleClass="infoButton" />
+			<h:commandButton value="#{msg['settings']}"
+				styleClass="settingButton" onclick="dlg2.show();" type="button" />
+			<p:dialog id="modalDialog" header="Administrator:pwd:Admin"
+				widgetVar="dlg2" modal="true" resizable="false" draggable="false">
+				<h:inputSecret value="#{administratorBean.password}" />
+				<h:commandButton value="#{msg['login']}"
+					action="#{administratorBean.checkPassword}" />
+			</p:dialog>
+		</div>
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="leftcolumn">
+	<h:form id="testForm">
+		
+		<h:panelGrid columns="1" cellpadding="0">
+			 <ui:repeat value="#{homeOverviewBean.dataModel.imageList}" var="imageVO" >
+			 <p:commandLink update=":commentLayer:certainImageID">
+			 	<p:graphicImage styleClass="imageThumbnailNormal imageThumnailEnlargable" 
+				value="#{imageVO.image}" />
+				<f:setPropertyActionListener target="#{homeOverviewBean.dataModel.image}" value="#{imageVO}" />
+			 </p:commandLink>
+			 </ui:repeat>
+		</h:panelGrid>
+	</h:form>
+	</ui:define>
+	
+	<ui:define name="centercolumn">
+		<style type="text/css">
+			@import url(resources/css/bodymap.css);
+		</style>
+		<div id="fullBodymap">
+			<p:graphicImage value="resources/images/bodymapFemaleLeft.png" id="bodymapLeft"/>
+			<p:graphicImage value="resources/images/bodymapFemaleFront.png" id="bodymapFront"/>
+			<p:graphicImage value="resources/images/bodymapFemaleRight.png" id="bodymapRight"/>
+			<p:graphicImage value="resources/images/bodymapFemaleBack.png" id="bodymapBack"/>
+		</div>
+	</ui:define>
+	
+	<ui:define name="rightcolumn">
+		<div class="patientlistButton">
+			<div class="patientlistText">
+				<p>Patient</p>
+				<p>List</p>
+			</div>
+		</div>
+		<h:commandButton value="#{msg['baseline']}" styleClass="baselineButton" />
+		<h:commandButton value="#{msg['guide']}" styleClass="guideButton" />
+	</ui:define>
+
+	<ui:define name="footer">
+	<h:form>
+		<div class="footerpanel">
+			<p:commandButton value="DISABLE" styleClass="footerButton" />
+			<p:commandButton id="homeExportButton" value="EXPORT" onclick="showExportLayer()" styleClass="footerButton" />
+			<p:commandButton value="Edit Patient" style="width:200px;" styleClass="footerButton editPatient" />
+		</div>
+	</h:form>
+	</ui:define>
+
+</ui:composition>

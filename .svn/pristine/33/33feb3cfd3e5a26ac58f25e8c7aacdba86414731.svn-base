@@ -1,0 +1,17 @@
+login=Anmelden
+login_username=Benutzername
+login_password=Passwort
+login_welcome=Willkommen
+login_error=Anmeldung Fehler
+login_invalid=Ung\u00FCltige Benutzername/Passwort
+login_lock=Given username is locked
+logout=Abmelden
+settings=SETTINGS
+info=INFO
+home=Startseite
+baseline=BASELINE
+guide=GUIDE
+saveandnew=SAVE AND NEW
+saveandstart=SAVE AND START
+firstname=Vorname
+lastname=Nachname

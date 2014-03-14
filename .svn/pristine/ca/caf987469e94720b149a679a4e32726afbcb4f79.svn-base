@@ -1,0 +1,7 @@
+/**
+ * test for JS loading function, remove if needed.
+ */
+ $(document).ready(function () {
+	//alert("reources/js/testScript1.js is loaded  and  reources/css/testCSS1.css is loaded");
+});
+ 

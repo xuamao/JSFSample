@@ -1,0 +1,141 @@
+/***********************************************
+         created by amao xu
+         Basic Elements
+***********************************************/
+
+.btnOnepictureNormal {
+	width:60px;
+	height:60px;
+	background: url('../../resources/images/btnOnepictureNormal.png') 100% 100% no-repeat;
+	position:absolute; top:0px;  right:520px;
+}
+
+.btnTwopicturesNormal {
+	width:60px;
+	height:60px;
+	background: url('../../resources/images/btnTwopicturesNormal.png') 100% 100% no-repeat;
+	position:absolute; top:0px;  right:460px;
+}
+
+.btnFourpicturesNormal {
+	width:60px;
+	height:60px;
+	background: url('../../resources/images/btnFourpicturesNormal.png') 100% 100% no-repeat;
+	position:absolute; top:0px;  right:400px;
+}
+
+.zoomInButton {
+	background: url('../../resources/images/btnZoomin.png') 100% 100% no-repeat;
+	background-size: cover;
+	height:60px;
+	position:absolute;
+	left:374px;
+	bottom:0px;
+	width:80px;
+}
+
+.zoomInButton:HOVER {
+	background: url('../../resources/images/btnZoominHover.png') 100% 100% no-repeat;
+}
+
+.zoomOutButton {
+	background: url('../../resources/images/btnZoomoutNormal.png') 100% 100% no-repeat;
+	background-size: cover;
+	height:60px;
+	position:absolute;
+	left:454px;
+	bottom:0px;
+	width:80px;
+}
+
+.zoomOutButton:HOVER {
+	background: url('../../resources/images/btnZoomoutHover.png') 100% 100% no-repeat;
+}
+
+.measurementButton {
+	background: url('../../resources/images/btnMeasureNormal.png') 100% 100% no-repeat;
+	background-size: cover;
+	position:absolute;
+	left:634px;
+	bottom:0px;
+	width:160px;
+	height:60px;
+}
+
+.measurementButton:HOVER {
+	background: url('../../resources/images/btnMeasureHover.png') 100% 100% no-repeat;
+}
+
+.disabledButton {
+	background: url('../../resources/images/btnDisableNormal.png') 100% 100% no-repeat;
+	background-size: cover;
+	position:absolute;
+	left:794px;
+	bottom:0px;
+	width:160px;
+	height:60px;
+}
+
+.disabledButton:HOVER {
+	background: url('../../resources/images/btnDisableHover.png') 100% 100% no-repeat;
+}
+
+.oneImagePanel {
+	width:60%;
+	height:100%;
+	position: absolute;
+	left: 387px;
+	background: url('../../resources/images/imageLarge.png') 100% 100% no-repeat;
+	background-size: cover;
+}
+
+.twoImagePanel {
+	width:80%;
+	height:100%;
+	position: absolute;
+	right: 387px;
+	background: url('../../resources/images/imageLarge.png') 100% 100% no-repeat;
+	background-size: cover;
+}
+
+.oneImage {
+	width:80%;
+	height:100%;
+	position: absolute;
+	margin-left:60px;
+	margin-right:60px;
+}
+
+.iconTurnLeft{
+	position:absolute;
+	left:0px;
+	background: url('../../resources/images/iconTurnLeft.png') no-repeat 50% 50%;
+	height:100%;
+	width:60px;
+	top: 0px;
+}
+
+.iconTurnRight{
+	position:absolute;
+	right:0px;
+	background: url('../../resources/images/iconTurnRight.png') no-repeat 50% 50%;
+	height:100%;
+	width:60px;
+	top: 0px;
+}
+
+.imageOne {
+	width: 50%;
+	position: absolute;
+	height: 50%;
+	margin-top: 200px;
+	left: 0px;
+}
+
+.imageTwo {
+	width: 50%;
+	position: absolute;
+	height: 50%;
+	margin-top: 200px;
+	right: 0px;
+}

@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="template/template_experimental.xhtml">
+	<ui:define name="headerPageInfo">
+		<h:outputText value="Allocate" />
+	</ui:define>
+	<ui:define name="headerPatientInfo">
+		<h:outputText value="Dummy Patient Info" />
+	</ui:define>
+	<ui:define name="headerButtons">
+		<p:commandButton id="logoutButton" value="LOGOUT" styleClass="logout"/>
+	</ui:define>
+	<ui:define name="rightColumnContent">
+	</ui:define>
+	<ui:define name="leftColumnContent">
+		<p:graphicImage value="#{allocationManagedBean.imageURL1}" styleClass="leftImage"/>
+		<p:graphicImage value="#{allocationManagedBean.imageURL2}" styleClass="leftImage"/>
+		<p:graphicImage value="#{allocationManagedBean.imageURL3}" styleClass="leftImage"/>
+		<p:graphicImage value="#{allocationManagedBean.imageURL4}" styleClass="leftImage"/>
+		<!-- 
+	 	<p:graphicImage value="resources/images/imageThumbnailNormal.png" styleClass="leftImage"/>
+	 	<p:graphicImage value="resources/images/imageThumbnailNormal.png" styleClass="leftImage"/>
+		<p:graphicImage value="resources/images/imageThumbnailNormal.png" styleClass="leftImage"/>
+		 -->
+	</ui:define>
+	<ui:define name="centerContent">
+	<!--  TODO GENDER of patient must select the bodymap to display -->
+	<div id="fullBodymap">
+		<p:graphicImage value="resources/images/bodymapFemaleLeft.png" id="bodymapLeft"/>
+		<p:graphicImage value="resources/images/bodymapFemaleFront.png" id="bodymapFront"/>
+		<p:graphicImage value="resources/images/bodymapFemaleRight.png" id="bodymapRight"/>
+		<p:graphicImage value="resources/images/bodymapFemaleBack.png" id="bodymapBack"/>
+	</div>
+	<div id="bodymapDetail">
+		<div id="turnLeftButton">
+			<p:graphicImage id="iconTurnLeftButton" value="resources/images/iconTurnLeft.png" />
+		</div>
+		<div id="bodymapDetailClip"> 
+			<p:graphicImage id="bodymapDetailImage"/>
+			<div id="pin">
+				<img id="allocationMarkerImage" src="resources/images/allocationMarker.png" />
+				<h:form id="allocationForm">
+					<p:inputText name="paramFacing" id="paramFacing" value="#{allocationManagedBean.facing}" type="hidden" />
+					<p:inputText name="paramX" id="paramX" value="#{allocationManagedBean.x}" type="hidden" />
+					<p:inputText name="paramY" id="paramY" value="#{allocationManagedBean.y}" type="hidden" />
+				
+					<p:commandButton styleClass="allocationButton" value="Allocate" onclick="fillParameters();" action="#{allocationManagedBean.allocate}"/>
+				</h:form>
+			</div>
+		</div>
+		<div id="turnRightButton">
+			<p:graphicImage id="iconTurnRightButton" value="resources/images/iconTurnRight.png" />
+		</div> 
+		<p:commandButton id="zoomOutButton" value="100%" onclick="showFullBodymap();"/>
+	</div>
+	</ui:define>
+	<ui:define name="footer">
+		<p:commandButton id="homeButton" value="HOME" styleClass="home"/>
+	</ui:define>	
+</ui:composition>
+</html>

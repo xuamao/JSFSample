@@ -1,0 +1,36 @@
+/*****************************************
+ * 
+ * Project: Cube Application Heine
+ * Package Type: API
+ * Create by: amao.xu@altran.com
+ * Date: 10.06.2013
+ *
+ *****************************************/
+package de.heine.cube.online.api;
+
+import java.util.Locale;
+
+/**
+ * 
+ * Configuration is responsible for all configuration information of CUBE-App
+ * 
+ * 
+ * @author axu
+ * 
+ */
+public interface IConfiguration {
+	
+	/**
+	 * Language code is defined inside of Locale object. 
+	 * Default value is 'en'
+	 * 
+	 * @return Locale
+	 */
+	Locale getLocale();
+	
+	/**
+	 * Depending on the Lanuage code, different location string will be returned by this interface
+	 * @return
+	 */
+	String getResourceLocation();
+}

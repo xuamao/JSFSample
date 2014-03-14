@@ -1,0 +1,17 @@
+/***********************************************
+         created by Thomas Liebel
+         Basic Elements
+***********************************************/
+
+#bodymapLeft {
+	position:absolute;	
+}
+#bodymapFront {
+	position:absolute;	
+}
+#bodymapRight {
+	position:absolute;	
+}
+#bodymapBack {
+	position:absolute;	
+}

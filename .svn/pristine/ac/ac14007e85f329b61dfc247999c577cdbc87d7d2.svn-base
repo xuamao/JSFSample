@@ -1,0 +1,406 @@
+/***********************************************
+         created by amao xu
+         Basic Elements
+***********************************************/
+.heine_pateint_info {
+	height: 60px;
+	float: left;
+	font-family: "Helvetica Neue 45Light", Arial, sans-serif;
+	font-size: 18pt;
+	padding-top: 20px;
+}
+
+.settingButton {
+	width: 160px;
+	height: 61px;
+	background-image: url('../../resources/images/btnSettingsNormal.png');
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	padding-left: 45px;
+	float: right;
+	/*In order to remove border, here must be setted as -2px*/
+	margin-right: -2px;
+}
+
+.infoButton {
+	width: 160px;
+	height: 61px;
+	background-image: url('../../resources/images/btnInfoNormal.png');
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	padding-left: 45px;
+	float: right;
+	/*In order to remove border, here must be setted as -2px*/
+	margin-right: -1px;
+}
+
+.logoutButton {
+	width: 240px;
+	height: 61px;
+	background-image: url('../../resources/images/btnLogoutNormal.png');
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	padding-left: 45px;
+	float: right;
+}
+
+.logoutButton:HOVER {
+	background-image: url('../../resources/images/btnLogoutHover.png');
+}
+
+.settingButton:HOVER {
+	background-image: url('../../resources/images/btnSettingsHover.png');
+}
+
+.infoButton:HOVER {
+	background-image: url('../../resources/images/btnInfoHover.png');
+}
+
+.patientlistButton {
+	width: 140px;
+	background: url('../../resources/images/btnPatientlistNormal.png') 100%
+		100% no-repeat;
+	background-size: cover;
+	height: 900px;
+	margin-top: -15px;
+	position: fixed;
+	right: 0px;
+	z-index: 10;
+}
+
+.patientlistText {
+	right: 0px;
+	margin-top: 80px;
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	padding-left: 20px;
+	text-align: center;
+}
+
+.patientListText p {
+	margin: 0px;
+}
+
+.baselineButton {
+	width: 240px;
+	height: 90px;
+	background-image: url('../../resources/images/btnBaselineNormal.png');
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	position: fixed;
+	bottom: 165px;
+	right: 0px;
+}
+
+.baselineButton:HOVER {
+	background-image: url('../../resources/images/btnBaselineHover.png');
+}
+
+.guideButton {
+	width: 240px;
+	height: 90px;
+	background-image: url('../../resources/images/btnGuideNormal.png');
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	bottom: 75px;
+	position: fixed;
+	right: 0px;
+}
+
+.guideButton:HOVER {
+	background-image: url('../../resources/images/btnGuideHover.png');
+}
+
+.footerpanel {
+	position: absolute;
+	bottom: 0px;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+.footerButton {
+	width: 160px;
+	height: 61px;
+	background: url('../../resources/images/btnInfoNormal.png') no-repeat
+		100% 100%;
+	color: rgb(0, 0, 0);
+	font-family: "Helvetica Neue 75Bold", Arial, sans-serif;
+	font-size: 14pt;
+	margin-right: -1px;
+	background-size: cover;
+}
+
+.footerButton:HOVER {
+	background: url('../../resources/images/btnInfoHover.png') no-repeat
+		100% 100%;
+	background-size: cover;
+}
+
+.imageThumbnailNormal {
+	margin: -1px;
+	display: inline-block;
+	position: relative;
+	float: left;
+}
+
+/**
+	PatientList CSS
+**/
+#patientlistLayer {
+	background: url('../../resources/images/backgroundPatientlist.png') 100%
+		100% no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 60px;
+	z-index: 10;
+	width: 2300px;
+	height: 1280px;
+}
+
+/**
+	PatientList CSS
+**/
+#patientlistLayer {
+	background: url('../../resources/images/backgroundPatientlist.png') 100%
+		100% no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 60px;
+	z-index: 10;
+	width: 2300px;
+	height: 1280px;
+}
+
+#patienteditLayer {
+	background: url('../../resources/images/backgroundPatientlist.png') 100%
+		100% no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 60px;
+	z-index: 10;
+	width: 2300px;
+	height: 1280px;
+}
+
+#layerContainer2 {
+	display: none;
+}
+
+.patientTable {
+	width: 730px;
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+	margin-top: 100px;
+	margin-left: 200px;
+}
+
+.addpatientPanel {
+	width: 60%;
+	margin: 200px;
+	min-width: 1000px
+}
+
+.ui-datatable-even {
+	background: url('../../resources/images/listRowEvenNormal.png')
+		no-repeat 100% 100%;
+	color: rgb(0, 0, 0);
+	height: 45px;
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+}
+
+.ui-datatable-even:HOVER {
+	background: url('../../resources/images/listRowEvenActive.png')
+		no-repeat 100% 100%;
+}
+
+.ui-datatable-odd {
+	background: url('../../resources/images/listRowOddNormal.png') no-repeat
+		100% 100%;
+	color: rgb(0, 0, 0);
+	height: 45px;
+	font-family: "Helvetica Neue 65Medium", Arial, sans-serif;
+	font-size: 14pt;
+}
+
+.ui-datatable-odd:HOVER {
+	background: url('../../resources/images/listRowOddActive.png') no-repeat
+		100% 100%;
+}
+
+.patientdataTable {
+	border: none;
+}
+
+.ui-datatable-scrollable-header-box {
+	display: none;
+}
+
+.searchInputText {
+	width: 710px;
+	height: 60px;
+	color: rgb(255, 255, 255);
+	font-family: "Helvetica Neue 45Light", Arial, sans-serif;
+	font-size: 18pt;
+	padding-left: 40px;
+	background: url('../../resources/images/listSearchfieldNormal.png');
+}
+
+.searchInputText:HOVER {
+	background: url('../../resources/images/listSearchfieldActive.png');
+}
+
+.advancedsearch {
+	float: left;
+	margin-left: -81px;
+}
+
+.addpatientNormal {
+	position: relative;
+	float: right;
+	top: 0px;
+	margin-right: -60px;
+}
+
+.inputfield480x60 {
+	color: white;
+	width: 480px;
+	height: 60px;
+	padding-left: 20px;
+	font-family: "Helvetica Neue 75Bold", Arial, sans-serif;
+	font-size: 18pt;
+	background-image: url('../../resources/images/loginTextfieldNormal.png');
+}
+
+.popCalender {
+	width: 480px;
+	height: 60px;
+}
+
+.popCalender .ui-inputfield {
+	color: white;
+	width: 480px;
+	height: 60px;
+	padding-left: 20px;
+	font-family: "Helvetica Neue 75Bold", Arial, sans-serif;
+	font-size: 18pt;
+	background-image: url('../../resources/images/loginTextfieldNormal.png');
+}
+
+.genderButton .ui-button {
+	width: 238px;
+	height: 60px;
+	font-family: "Helvetica Neue 75Bold", Arial, sans-serif;
+	font-size: 18pt;
+}
+
+.saveandnew {
+	float: right;
+}
+
+.imageFlyout {
+	position: absolute;
+	display: none;
+	background: url('../../resources/images/imageFlyout.png') no-repeat 100%
+		100%;
+	background-size: cover;
+	font-family: "Helvetica Neue 75Bold", Arial, sans-serif;
+	font-size: 18pt;
+	color: white;
+}
+
+.commentNormal {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 22;
+}
+
+.compareSmallNormal {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	z-index: 22;
+}
+
+.iconTurn {
+	position: absolute;
+	right: 0px;
+	background: url('../../resources/images/iconTurnLeft.png') no-repeat 50%
+		50%;
+	height: 100%;
+	width: 60px;
+	top: 0px;
+	z-index: 21;
+}
+
+#bodymapLeft {
+	position: absolute;
+}
+
+#bodymapFront {
+	position: absolute;
+}
+
+#bodymapRight {
+	position: absolute;
+}
+
+#bodymapBack {
+	position: absolute;
+}
+
+#dimmer {
+	background: rgba(180, 180, 180, .7);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 15;
+	display: none;
+}
+
+#leftcolumn {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	top: 0px;
+	bottom: 125px;
+}
+.locationConnectorLine{
+	position: absolute;
+	background: #000000;
+	top: 0px;
+	left: 0px;
+	width:1px;
+	height:1px;
+}
+.locationSquare{
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background: url('../../resources/images/markerButtonNormal.png')
+}
+.locationSquare:hover{
+	background: url('../../resources/images/markerButtonHover.png')
+}
+.locationSquare:active{
+	background: url('../../resources/images/markerButtonActive.png')
+}
+
+.locationSquareSelected{
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background: url('../../resources/images/markerButtonActive.png')
+}
+.locationSquareDisabled{
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background: url('../../resources/images/markerButtonInactive.png')
+}

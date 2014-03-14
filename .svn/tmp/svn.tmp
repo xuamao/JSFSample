@@ -1,0 +1,151 @@
+/*****************************************
+ * 
+ * Project: Cube Application Heine
+ * Package Type:
+ * Create by: amao.xu@altran.com
+ * Date: 13.06.2013
+ *
+ *****************************************/
+package de.heine.cube.onlineMock;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.heine.cube.common.api.LocationService;
+import de.heine.cube.common.dto.ImageVO;
+import de.heine.cube.common.dto.LocationVO;
+import de.heine.cube.common.exception.ServiceException;
+import de.heine.cube.common.exception.SystemException;
+
+/**
+ * 
+ * @author axu
+ * 
+ */
+public class LocationServiceMock implements LocationService {
+
+	public LocationServiceMock() {
+
+	}
+
+	@Override
+	public LocationVO allocateImage(int patientID, int segmentID, int imageID,
+			int x_coordinate, int y_coordinate, int userID)
+			throws ServiceException, SystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteImage(ImageVO image, LocationVO location)
+			throws ServiceException, SystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<ImageVO> getLocationImages(LocationVO location)
+			throws ServiceException, SystemException {
+		List<ImageVO> list = new ArrayList<ImageVO>();
+		ImageVO image1 = new ImageVO();
+		image1.setImage("resources/images_temp/1.jpg");
+
+		ImageVO image2 = new ImageVO();
+		image2.setImage("resources/images_temp/2.jpg");
+		
+		ImageVO image3 = new ImageVO();
+		image3.setImage("resources/images_temp/3.jpg");
+
+		ImageVO image4 = new ImageVO();
+		image4.setImage("resources/images_temp/4.jpg");
+		
+		ImageVO image5 = new ImageVO();
+		image5.setImage("resources/images_temp/5.jpg");
+
+		ImageVO image6 = new ImageVO();
+		image6.setImage("resources/images_temp/6.jpg");
+		
+		ImageVO image7 = new ImageVO();
+		image7.setImage("resources/images_temp/7.jpg");
+
+		ImageVO image8 = new ImageVO();
+		image8.setImage("resources/images_temp/8.jpg");
+		
+		ImageVO image9 = new ImageVO();
+		image9.setImage("resources/images_temp/9.jpg");
+
+		ImageVO image10 = new ImageVO();
+		image10.setImage("resources/images_temp/10.png");
+		
+		list.add(image1);
+		list.add(image2);
+		list.add(image3);
+		list.add(image4);
+		list.add(image5);
+		list.add(image6);
+		list.add(image7);
+		list.add(image8);
+		list.add(image9);
+		list.add(image10);
+
+		return list;
+	}
+
+	@Override
+	public List<LocationVO> getAllLocationsForPatient(int patientID)
+			throws ServiceException, SystemException {
+		// FIXME logausgabe...
+		System.out.println("LocationServiceMock called");
+		List<LocationVO> list = new ArrayList<LocationVO>();
+		
+		LocationVO location = new LocationVO();
+		location.setID_Patient(patientID);
+		location.setX_Coordinate(50);
+		location.setY_Coordinate(50);
+		list.add(location);
+		
+		location = new LocationVO();
+		location.setID_Patient(patientID);
+		location.setX_Coordinate(173);
+		location.setY_Coordinate(66);
+		list.add(location);
+
+		location = new LocationVO();
+		location.setID_Patient(patientID);
+		location.setX_Coordinate(87);
+		location.setY_Coordinate(234);
+		list.add(location);
+
+		location = new LocationVO();
+		location.setID_Patient(patientID);
+		location.setX_Coordinate(183);
+		location.setY_Coordinate(289);
+		list.add(location);
+		
+		// FIXME logausgabe...
+		System.out.println("LocationServiceMock returning: " + list.size() + " locations");
+		return list;
+	}
+
+	@Override
+	public LocationVO disableLocation(int locationID, int userID)
+			throws ServiceException, SystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LocationVO enableLocation(int locationID, int userID)
+			throws ServiceException, SystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ImageVO editImage(int imageID, String Comment, String Diagnosis,
+			int userID) throws ServiceException, SystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

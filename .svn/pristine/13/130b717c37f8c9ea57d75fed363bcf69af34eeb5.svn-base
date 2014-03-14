@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head />
+
+<body>
+<ui:composition>
+	<h:form id="exportForm">	
+	<div id="exportFrame">
+		<div id="exportHeader">
+		<h:outputText value="EXPORT" />
+		<p:commandButton value="" onclick="hideExportLayer()" styleClass="exportCloseButton"/>
+		</div>
+		<div id="exportCenterImageColumn">
+			<div id="exportCenterImageColumnLeftCheckboxes">
+				<ui:repeat value="#{homeOverviewBean.dataModel.imageList}" var="image" varStatus="status">
+						<h:panelGroup styleClass="checkBoxWrapper" rendered="#{status.odd}" layout="block">
+							<p:selectBooleanCheckbox id="checkboxLeft" rendered="#{status.odd}" 
+							styleClass="exportCenterImageColumnCheckbox" widgetVar="chkbx#{status.index}" value="#{image.selected}"/>
+							<script type="text/javascript">
+								widgetVars.push("chkbx#{status.index}");
+							</script>
+						</h:panelGroup>
+				</ui:repeat>
+			</div>
+			
+			<div id="exportCenterImageColumnThumbnailColumn">
+				<ui:repeat value="#{homeOverviewBean.dataModel.imageList}" var="image">
+					<p:graphicImage value="#{image.image}" styleClass="imageThumbnailExport" />
+				</ui:repeat>
+			</div>			
+			<div id="exportCenterImageColumnRightCheckboxes">
+				<ui:repeat value="#{homeOverviewBean.dataModel.imageList}" var="image" varStatus="status">
+					<h:panelGroup styleClass="checkBoxWrapper" rendered="#{status.even}" layout="block">
+						<p:selectBooleanCheckbox rendered="#{status.even}" 
+							styleClass="exportCenterImageColumnCheckbox" widgetVar="chkbx#{status.index}" value="#{image.selected}"/>
+						<script type="text/javascript">
+							widgetVars.push("chkbx#{status.index}");
+						</script>
+					</h:panelGroup>
+				</ui:repeat>
+			</div>
+			
+		</div>
+		
+		<div id="exportCenterTopButtons">
+			<p:commandButton value="SELECT ALL" styleClass="exportCenterTopButtonsStyle" onclick="selectAll()"/>
+			<p:commandButton value="DESELECT ALL" styleClass="exportCenterTopButtonsStyle" onclick="deselectAll()"/>
+		</div>
+		
+		<div id="exportCenterBodyMap">
+			<p:graphicImage value="resources/images/bodymapFemaleLeft.png" id="exportBodymapLeft" styleClass="exportBodymapImage"/>
+			<p:graphicImage value="resources/images/bodymapFemaleFront.png" id="exportBodymapFront" styleClass="exportBodymapImage"/>
+			<p:graphicImage value="resources/images/bodymapFemaleRight.png" id="exportBodymapRight" styleClass="exportBodymapImage"/>
+			<p:graphicImage value="resources/images/bodymapFemaleBack.png" id="exportBodymapBack" styleClass="exportBodymapImage"/>
+		</div>
+		
+		<div id="exportCenterBottomButtons">
+			<p:commandButton value="DB" styleClass="exportCenterBottomButtonsStyle" />
+			<p:commandButton value="RECORD" styleClass="exportCenterBottomButtonsStyle">
+				<p:fileDownload value="#{homeOverviewBean.exportPDF()}" />
+			</p:commandButton>
+			<p:commandButton value="IMAGES" styleClass="exportCenterBottomButtonsStyle">
+				<p:fileDownload value="#{homeOverviewBean.exportImages()}" />
+			</p:commandButton>
+		</div>		
+	</div>	
+	<div id="exportBottomButton">
+		<p:commandButton value="EXPORT" onclick="hideExportLayer()" styleClass="exportBottomButton" />
+	</div>	
+	</h:form>
+</ui:composition>
+</body>
+</html>
