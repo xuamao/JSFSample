@@ -48,6 +48,7 @@
 					<p:inputText name="paramY" id="paramY" value="#{baselineAllocationBean.y}" type="hidden" />
 				
 					<p:commandButton styleClass="allocationButton" value="Allocate" onclick="fillParameters();" oncomplete="addLocation();layoutLocationMarkers();showFullBodymap();animateLatestLocation();" action="#{baselineAllocationBean.allocate}"/>
+					<p:calendar></p:calendar>
 				</h:form>
 			</div>
 		</div>
